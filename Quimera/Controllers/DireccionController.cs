@@ -18,14 +18,14 @@ namespace Quimera.Controllers
             _context = context;
         }
 
-        // GET: Direccion
+        // GET: Direccions
         public async Task<IActionResult> Index()
         {
             var clientesDbContext = _context.Direccions.Include(d => d.Cliente);
             return View(await clientesDbContext.ToListAsync());
         }
 
-        // GET: Direccion/Details/5
+        // GET: Direccions/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Direccions == null)
@@ -44,14 +44,14 @@ namespace Quimera.Controllers
             return View(direccion);
         }
 
-        // GET: Direccion/Create
+        // GET: Direccions/Create
         public IActionResult Create()
         {
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Id");
             return View();
         }
 
-        // POST: Direccion/Create
+        // POST: Direccions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Calle,Ciudad,CodigoPostal,Pais,ClienteId")] Direccion direccion)
@@ -66,7 +66,7 @@ namespace Quimera.Controllers
             return View(direccion);
         }
 
-        // GET: Direccion/Edit/5
+        // GET: Direccions/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Direccions == null)
@@ -83,7 +83,7 @@ namespace Quimera.Controllers
             return View(direccion);
         }
 
-        // POST: Direccion/Edit/5
+        // POST: Direccions/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Calle,Ciudad,CodigoPostal,Pais,ClienteId")] Direccion direccion)
@@ -117,7 +117,7 @@ namespace Quimera.Controllers
             return View(direccion);
         }
 
-        // GET: Direccion/Delete/5
+        // GET: Direccions/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Direccions == null)
@@ -136,7 +136,7 @@ namespace Quimera.Controllers
             return View(direccion);
         }
 
-        // POST: Direccion/Delete/5
+        // POST: Direccions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -75,7 +75,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column nav-compact" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Inicio -->
                         <li class="nav-item">
-                            <a active-when="/Home/Index" asp-controller="Home" asp-action="Index" class="nav-link">
+                            <a active-when="/Home/Index" asp-controller="Clientes" asp-action="Index" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -94,10 +94,17 @@
                                 <p>Municipios</p>
                             </a>
                         </li>
+                           <!-- Municipios -->
+                        <li class="nav-item">
+                            <a active-when="/Municipios/Index" asp-controller="Direccion" asp-action="Index" class="nav-link">
+                                <i class="fa btn-social  nav-icon"></i>
+                                <p>Vista zona </p>
+                            </a>
+                        </li>
                         <!-- Usuarios -->
                         <li class="nav-item">
                             <a active-when="/Users/Index" asp-controller="Categoria" asp-action="Index" class="nav-link">
-                                <i class="fa fa-user-circle nav-icon"></i>
+                                <i class="fa fa-cog"></i>
                                 <p>Configuracion</p>
                             </a>
                         </li>
@@ -166,8 +173,7 @@
         </div>
     </footer>
 
-
-
+      @await Component.InvokeAsync("Notyf")
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
@@ -216,3 +222,4 @@
 <script src="~/plugins/fontawesome-free/webfonts/all.min.js"></script>
 <script src="~/dist/js/adminlte.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+

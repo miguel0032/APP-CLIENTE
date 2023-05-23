@@ -18,8 +18,7 @@ namespace Quimera.Models
         public string? Cedula { get; set; }
         public string? Empresa { get; set; }
         public int? CategoriaId { get; set; }
-        // Propiedad adicional para almacenar el Id como texto
-        public string IdTexto { get; set; }
+        public string? IdTexto { get; set; }
 
         public virtual Categorium? Categoria { get; set; }
         public virtual ICollection<Direccion> Direccions { get; set; }

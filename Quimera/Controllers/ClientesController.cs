@@ -52,14 +52,14 @@ namespace Quimera.Controllers
         }
 
         // POST: Clientes/Create
-      
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdTexto,Nombre,Apellido,Telefono,CorreoElectronico,Cedula,Empresa,CategoriaId")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,Apellido,Telefono,CorreoElectronico,Cedula,Empresa,CategoriaId,IdTexto")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
-                cliente.Id = int.Parse(cliente.IdTexto); // Asignar el valor del Id convertido a entero
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -67,7 +67,6 @@ namespace Quimera.Controllers
             ViewData["CategoriaId"] = new SelectList(_context.Categoria, "Id", "Id", cliente.CategoriaId);
             return View(cliente);
         }
-
 
         // GET: Clientes/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -87,9 +86,11 @@ namespace Quimera.Controllers
         }
 
         // POST: Clientes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Telefono,CorreoElectronico,Cedula,Empresa,CategoriaId")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,Apellido,Telefono,CorreoElectronico,Cedula,Empresa,CategoriaId,IdTexto")] Cliente cliente)
         {
             if (id != cliente.Id)
             {

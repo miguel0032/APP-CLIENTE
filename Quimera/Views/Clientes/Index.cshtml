@@ -4,11 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -35,14 +30,12 @@
                                         @Html.DisplayNameFor(model => model.CorreoElectronico)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Cedula)
+                                        Descripcion
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Empresa)
+                                        Nombre Empresa
                                     </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Categoria)
-                                    </th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -62,19 +55,16 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.CorreoElectronico)
                                         </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Cedula)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item.Empresa)
-                                        </td>
+                                     
                                         <td>
                                             @Html.DisplayFor(modelItem => item.IdTexto)
                                         </td>
                                         <td>
-                                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                            @Html.DisplayFor(modelItem => item.Categoria.Nombre)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                                            <a asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
                                         </td>
                                     </tr>
                                 }

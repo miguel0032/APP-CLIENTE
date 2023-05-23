@@ -21,11 +21,28 @@ namespace Quimera.Controllers
         // GET: Categoriums
         public async Task<IActionResult> Index()
         {
-              return _context.Categoria != null ? 
-                          View(await _context.Categoria.ToListAsync()) :
-                          Problem("Entity set 'ClientesDbContext.Categoria'  is null.");
+            return _context.Categoria != null ?
+                        View(await _context.Categoria.ToListAsync()) :
+                        Problem("Entity set 'ClientesDbContext.Categoria'  is null.");
         }
 
+        // GET: Categoriums/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null || _context.Categoria == null)
+            {
+                return NotFound();
+            }
+
+            var categorium = await _context.Categoria
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (categorium == null)
+            {
+                return NotFound();
+            }
+
+            return View(categorium);
+        }
 
         // GET: Categoriums/Create
         public IActionResult Create()
@@ -128,14 +145,14 @@ namespace Quimera.Controllers
             {
                 _context.Categoria.Remove(categorium);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CategoriumExists(int id)
         {
-          return (_context.Categoria?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Categoria?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
